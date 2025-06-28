@@ -1,1 +1,1 @@
-# firefox-theme
+# firefox-config
