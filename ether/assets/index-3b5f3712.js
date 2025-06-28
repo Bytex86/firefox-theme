@@ -2075,8 +2075,8 @@ function Dn(n) {
         Ee == null ||
             Ee.addEventListener("click", async () => {
                 if (($n(), Ye)) {
-                    const { default: e } = await Mn(() => import("https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/Settings-71cb8193.js?v=20241222"), [
-                        "https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/index-1c66d117.css?v=20241222",
+                    const { default: e } = await Mn(() => import("https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/Settings-71cb8193.js"), [
+                        "https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/index-1c66d117.css",
                     ]);
                     e(n), (Ye = !1);
                 }
