@@ -203,7 +203,7 @@ function se(r, e) {
 
 Object.keys(Gn).forEach(n => {
   Gn[n].theme = { ...Gn.bw.theme };
-  Gn[n].image.image = `url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/${n}.jpg)`;
+  Gn[n].image.image = `url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/${n}.jpg)`;
 });
 
 class ne {

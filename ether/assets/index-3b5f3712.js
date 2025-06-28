@@ -2075,8 +2075,8 @@ function Dn(n) {
         Ee == null ||
             Ee.addEventListener("click", async () => {
                 if (($n(), Ye)) {
-                    const { default: e } = await Mn(() => import("https://cdn.jsdelivr.net/gh/Bytex86/firefox-rice-files/ether/assets/Settings-71cb8193.js"), [
-                        "https://cdn.jsdelivr.net/gh/Bytex86/firefox-rice-files/ether/assets/index-1c66d117.css",
+                    const { default: e } = await Mn(() => import("https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/Settings-71cb8193.js"), [
+                        "https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/index-1c66d117.css",
                     ]);
                     e(n), (Ye = !1);
                 }
@@ -2193,27 +2193,27 @@ function Zn(n) {
 }
 const Bn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/main-image.jpg)", "position x": "50%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/main-image.jpg)", "position x": "50%", "position y": "50%" },
     },
     Kn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/akira-explosion.jpg)", "position x": "52%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/akira-explosion.jpg)", "position x": "52%", "position y": "50%" },
     },
     Jn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/gruvbox_image31.png)", "position x": "30%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/gruvbox_image31.png)", "position x": "30%", "position y": "50%" },
     },
     Wn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/astero-20210517a.jpg)", "position x": "35%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/astero-20210517a.jpg)", "position x": "35%", "position y": "50%" },
     },
     Yn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/ilya-kuvshinov-untitled-1.jpg)", "position x": "50%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/ilya-kuvshinov-untitled-1.jpg)", "position x": "50%", "position y": "50%" },
     },
     Hn = {
         theme: { "bg color": "#000000", "fg color": "#ffffff", "main accent": "#8C001A", "accent 1": "#a7c080", "accent 2": "#e67e80", "accent 3": "#7fbbb3", "accent 4": "#d699b6", "accent 5": "#c6a0f6", "panel opacity": 0.3 },
-        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-config@main/ether/assets/images/samurai.jpg)", "position x": "50%", "position y": "50%" },
+        image: { image: "url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/samurai.jpg)", "position x": "50%", "position y": "50%" },
     },
     Gn = { everforest_dark: Bn, catppuccin: Yn, dracula: Hn, gruvbox: Jn, nord: Wn, bw: Kn },
     je = "image",
@@ -2225,7 +2225,7 @@ const defaultTheme = { ...Gn.bw.theme };
 
 Object.entries(Gn).forEach(([name, val]) => {
     val.theme = { ...defaultTheme }; // Apply unified theme
-    val.image.image = `url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-rice-files/ether/assets/images/${name}.jpg)`; // Dynamic image
+    val.image.image = `url(https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme/ether/assets/images/${name}.jpg)`; // Dynamic image
     val.image["position x"] = "50%"; // Optional: uniform positioning
     val.image["position y"] = "50%";
 });
@@ -2369,7 +2369,7 @@ class ms {
 }
 function _t() {
     const n = localStorage.getItem(yt);
-    let e = n ? JSON.parse(n) : it;
+    let e = n ? JSON.parse(n) : [];
     for (e = e.filter((t) => !!t); e.length < gt; ) e.push(new ms());
     return (
         e.forEach((t) => {
