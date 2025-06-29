@@ -27,27 +27,6 @@
     />
 
     <!-- 🧠 Main Ether JS + CSS via jsDelivr -->
-    <script>
-      // Clear localStorage to prevent JavaScript from replacing hardcoded links
-      localStorage.removeItem('links');
-      localStorage.removeItem('theme');
-      localStorage.removeItem('image');
-      localStorage.removeItem('search');
-      localStorage.removeItem('keybinds');
-      
-      // Remove 'removed' class from all link groups to make them visible
-      document.addEventListener('DOMContentLoaded', function() {
-        const linkGroups = document.querySelectorAll('.collection-links-wrapper');
-        linkGroups.forEach(group => {
-          group.classList.remove('removed');
-        });
-        
-        const linkWrappers = document.querySelectorAll('.link-wrapper');
-        linkWrappers.forEach(wrapper => {
-          wrapper.classList.remove('removed');
-        });
-      });
-    </script>
     <script
       type="module"
       crossorigin
@@ -98,7 +77,7 @@
             </div>
           </div>
           <div class="form-container">
-            <form action="" class="url-form removed">
+            <form action="" class="url-form">
               <input type="text" value="http://" />
             </form>
             <form
@@ -117,7 +96,6 @@
                   viewBox="0 0 256.000000 256.000000"
                   preserveAspectRatio="xMidYMid meet"
                   data-search="duckduckgo"
-                  class="removed"
                 >
                   <metadata>
                     Created by potrace 1.10, written by Peter Selinger 2001-2011

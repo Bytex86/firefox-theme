@@ -2363,9 +2363,8 @@ function xt(n) {
     return n.every((e) => !e.href);
 }
 function ys(n, e) {
-    var r;
     if (xt(e.links)) {
-        n.classList.add("removed");
+        // Don't hide the link group, just leave it as is
         return;
     }
     const t = n.querySelector(".collection-title");
@@ -2375,23 +2374,23 @@ function ys(n, e) {
         const i = e.links[a];
         s[a].href = i.href;
         const o = us.textNode({ text: i["display text"], classes: ["link-text"] });
-        s[a].append(o), i.href || (r = s[a].parentElement) == null || r.classList.add("removed");
+        s[a].append(o);
+        // Don't hide individual links, leave them visible
     }
 }
 function gs(n, e) {
     if (xt(e.links)) {
-        n.classList.add("removed");
+        // Don't hide the link group, just leave it as is
         return;
     }
-    n.classList.remove("removed");
+    // Don't remove "removed" class since we're not adding it anymore
     const t = n.querySelector(".collection-title");
     (t.textContent = e.title),
         n.querySelectorAll(".link").forEach((r, a) => {
-            var l, d;
-            (l = r.parentElement) == null || l.classList.remove("removed");
+            // Don't add/remove "removed" class for individual links
             const i = e.links[a];
             if (!i.href) {
-                (d = r.parentElement) == null || d.classList.add("removed");
+                // Don't hide links without href, leave them visible
                 return;
             }
             r.href = i.href;
@@ -2427,10 +2426,12 @@ function xs() {
         e = 0;
     window.addEventListener("keydown", (t) => {
         if (t.target.tagName === "INPUT" || (t.key != "Tab" && !t.key.includes("Arrow"))) return;
-        const s = Array.from(Me).filter((a) => !a.classList.contains("removed"));
+        // Don't filter out "removed" elements since we're not using that functionality
+        const s = Array.from(Me);
         function r() {
             const a = Me[n].querySelectorAll(".link-wrapper"),
-                i = Array.from(a).filter((o) => !o.classList.contains("removed"));
+                // Don't filter out "removed" elements
+                i = Array.from(a);
             (e = Math.min(i.length - 1, e)), i[e].focus();
         }
         switch (t.key) {
