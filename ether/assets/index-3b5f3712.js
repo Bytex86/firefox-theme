@@ -2345,9 +2345,9 @@ function _t() {
         group.links && group.links.some(link => link.href && link.href.trim() !== '')
     );
     
-    // If no valid links in localStorage, return null to preserve hardcoded links
+    // If no valid links in localStorage, return empty array to preserve hardcoded links
     if (!hasValidLinks) {
-        return null;
+        return [];
     }
     
     for (e = e.filter((t) => !!t); e.length < gt; ) e.push(new ms());
@@ -2409,12 +2409,14 @@ function kt(n) {
     const e = Xe ? ys : gs;
     (Xe = !1),
         n.forEach((t, s) => {
-            e(Me[s], t);
+            if (Me[s]) { // Make sure the element exists
+                e(Me[s], t);
+            }
         });
 }
 function Zs() {
     const links = _t();
-    if (links !== null) {
+    if (links && links.length > 0) {
         kt(links);
     }
 }
@@ -2467,7 +2469,7 @@ function ks() {
     const e = qn();
     lt(e);
     const t = _t();
-    xs(), kt(t), Rn();
+    xs(), /* kt(t), */ Rn();
     const s = ot();
     Cn(s);
     const r = mt();
