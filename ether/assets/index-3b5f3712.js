@@ -2052,37 +2052,6 @@ const Pn = "modulepreload",
                     });
             })
         ).then(() => e());
-    },
-    V = document.getElementById("settings-modal"),
-    Te = V == null ? void 0 : V.querySelector(".close-button"),
-    Ee = document.querySelector("button[name=settings]"),
-    Ne = document.getElementById("settings");
-let $e = !1;
-function Je() {
-    V.close(), ($e = !1);
-}
-function $n() {
-    V.showModal(), ($e = !0);
-}
-function We() {
-    return $e;
-}
-let Ye = !0;
-function Dn(n) {
-    Ne == null || Ne.addEventListener("click", (e) => e.stopPropagation()),
-        Te == null || Te.addEventListener("click", Je),
-        V == null || V.addEventListener("click", Je),
-        Ee == null ||
-            Ee.addEventListener("click", async () => {
-                if (($n(), Ye)) {
-                    const { default: e } = await Mn(() => import("https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/Settings-71cb8193.js"), [
-                        "https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/index-1c66d117.css",
-                    ]);
-                    e(n), (Ye = !1);
-                }
-            });
-}
-function Vn(n, e, t) {
     return "#" + ((1 << 24) | (n << 16) | (e << 8) | t).toString(16).slice(1);
 }
 function j(n) {
@@ -2370,6 +2339,17 @@ class ms {
 function _t() {
     const n = localStorage.getItem(yt);
     let e = n ? JSON.parse(n) : [];
+    
+    // Check if we have valid links in localStorage (not empty)
+    const hasValidLinks = e && e.length > 0 && e.some(group => 
+        group.links && group.links.some(link => link.href && link.href.trim() !== '')
+    );
+    
+    // If no valid links in localStorage, return empty array to preserve hardcoded links
+    if (!hasValidLinks) {
+        return [];
+    }
+    
     for (e = e.filter((t) => !!t); e.length < gt; ) e.push(new ms());
     return (
         e.forEach((t) => {
@@ -2422,6 +2402,11 @@ function gs(n, e) {
 }
 let Xe = !0;
 function kt(n) {
+    // If no links provided or all links are empty, don't replace hardcoded links
+    if (!n || n.length === 0 || n.every(group => !group.links || group.links.every(link => !link.href || link.href.trim() === ''))) {
+        return;
+    }
+    
     const e = Xe ? ys : gs;
     (Xe = !1),
         n.forEach((t, s) => {
@@ -2482,7 +2467,7 @@ function ks() {
     const s = ot();
     Cn(s);
     const r = mt();
-    pt(r), ds(), Dn({ links: t, keybinds: s, theme: e, imageState: n, search: r });
+    pt(r), ds();
 }
 ks();
 export {
