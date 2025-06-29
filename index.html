@@ -32,16 +32,13 @@
     src="https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/index-3b5f3712.js"
   ></script>
   <script>
-    // Fix for disappearing content - runs after main script loads
+    // Targeted fix for disappearing content - only affects link elements
     window.addEventListener('load', function() {
-      // Force all elements to be visible
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(function(el) {
+      // Only target link-related elements that might be hidden
+      const linkElements = document.querySelectorAll('.link-wrapper, .link, .collection-links-wrapper');
+      linkElements.forEach(function(el) {
         if (el.classList.contains('removed')) {
           el.classList.remove('removed');
-        }
-        if (el.style.display === 'none') {
-          el.style.display = '';
         }
       });
     });
