@@ -31,6 +31,21 @@
     crossorigin
     src="https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/index-3b5f3712.js"
   ></script>
+  <script>
+    // Fix for disappearing content - runs after main script loads
+    window.addEventListener('load', function() {
+      // Force all elements to be visible
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(function(el) {
+        if (el.classList.contains('removed')) {
+          el.classList.remove('removed');
+        }
+        if (el.style.display === 'none') {
+          el.style.display = '';
+        }
+      });
+    });
+  </script>
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/Bytex86/firefox-theme@main/ether/assets/index-1c66d117.css"
