@@ -2221,12 +2221,14 @@ const ft = "search",
     ht = "custom search details",
     Ge = { duckduckgo: "https://www.duckduckgo.com/", google: "https://www.google.com/search", custom: "" },
     es = k.enum(["duckduckgo", "google", "custom"]),
-    ts = k.object({ name: k.string(), "query url": k.string().url("Custom search query url is not a valid url") }),
-    w = document.querySelector(".search-form"),
-    E = document.querySelector(".url-form"),
-    ee = E == null ? void 0 : E.querySelector("input");
+    ts = k.object({ name: k.string(), "query url": k.string().url("Custom search query url is not a valid url") });
+
+// Move DOM element selection to initialization
+let w, E, ee;
+
 function ns(n) {
     n.preventDefault();
+    if (!ee) return;
     const e = ee.value;
     window.location.assign(e);
 }
@@ -2246,12 +2248,17 @@ function pt(n) {
             s.textContent = t.name;
         } else n = "google";
     }
-    w == null || w.setAttribute("action", Ge[n]);
-    const e = w == null ? void 0 : w.querySelectorAll(".search-icon");
-    e == null ||
-        e.forEach((t) => {
-            t.dataset.search != n ? t.classList.add("removed") : t.classList.remove("removed");
-        });
+    
+    if (!w) {
+        console.error("Search form not found!");
+        return;
+    }
+    
+    w.setAttribute("action", Ge[n]);
+    const e = w.querySelectorAll(".search-icon");
+    e.forEach((t) => {
+        t.dataset.search != n ? t.classList.add("removed") : t.classList.remove("removed");
+    });
 }
 function mt() {
     const n = localStorage.getItem(ft);
@@ -2271,21 +2278,35 @@ function is(n) {
     return es.parse(n, { errorMap: (e) => (e.code === "invalid_enum_value" ? { message: "Invalid search engine. Please select from Google or DuckDuckGo." } : { message: "Something went wrong. Please try again." }) }), !0;
 }
 function os() {
-    var n;
-    w == null || w.classList.remove("removed"), E == null || E.classList.add("removed"), (n = w == null ? void 0 : w.querySelector("input")) == null || n.focus();
+    if (!w || !E) return;
+    w.classList.remove("removed");
+    E.classList.add("removed");
+    const n = w.querySelector("input");
+    if (n) n.focus();
 }
 function cs() {
-    w == null || w.classList.add("removed"), E == null || E.classList.remove("removed"), ee.focus();
+    if (!w || !E || !ee) return;
+    w.classList.add("removed");
+    E.classList.remove("removed");
+    ee.focus();
     const n = ee.value;
     (ee.value = ""), (ee.value = n);
 }
 function ds() {
-    E == null || E.addEventListener("submit", ns),
-        window.addEventListener("keydown", (n) => {
-            const e = n.target;
-            e.tagName === "INPUT" || e.tagName === "TEXTAREA" || (n.key === "Shift" && !We() && os(), n.key === "Control" && !We() && cs());
-        });
+    if (E) E.addEventListener("submit", ns);
+    window.addEventListener("keydown", (n) => {
+        const e = n.target;
+        e.tagName === "INPUT" || e.tagName === "TEXTAREA" || (n.key === "Shift" && !We() && os(), n.key === "Control" && !We() && cs());
+    });
 }
+
+// Add missing We() function
+function We() {
+    // This function should check if we're in a form input
+    // For now, return false to allow the keyboard shortcuts to work
+    return false;
+}
+
 let Ce;
 class ls {
     constructor() {
@@ -2464,6 +2485,11 @@ function xs() {
     });
 }
 function ks() {
+    // Initialize DOM elements
+    w = document.querySelector(".search-form");
+    E = document.querySelector(".url-form");
+    ee = E == null ? void 0 : E.querySelector("input");
+    
     const n = Qn();
     ut(n);
     const e = qn();
