@@ -2345,9 +2345,9 @@ function _t() {
         group.links && group.links.some(link => link.href && link.href.trim() !== '')
     );
     
-    // If no valid links in localStorage, return empty array to preserve hardcoded links
+    // If no valid links in localStorage, return null to preserve hardcoded links
     if (!hasValidLinks) {
-        return [];
+        return null;
     }
     
     for (e = e.filter((t) => !!t); e.length < gt; ) e.push(new ms());
@@ -2401,7 +2401,7 @@ function gs(n, e) {
 }
 let Xe = !0;
 function kt(n) {
-    // If no links provided or all links are empty, don't replace hardcoded links
+    // If no links provided or all links are empty, preserve hardcoded links
     if (!n || n.length === 0 || n.every(group => !group.links || group.links.every(link => !link.href || link.href.trim() === ''))) {
         return;
     }
@@ -2413,7 +2413,10 @@ function kt(n) {
         });
 }
 function Zs() {
-    kt(_t());
+    const links = _t();
+    if (links !== null) {
+        kt(links);
+    }
 }
 function vs(n) {
     _s(n), localStorage.setItem(yt, JSON.stringify(n));
