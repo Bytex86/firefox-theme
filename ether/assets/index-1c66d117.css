@@ -297,14 +297,6 @@ input:placeholder-shown {
   background-position-y:50%;
   background-size:cover
 }
-.date-wrapper {
-  text-transform:uppercase;
-  font-family:Roboto,sans-serif;
-  font-weight:900;
-  font-size:min(32.25px,1.7vw);
-  position:relative;
-  width:max-content
-}
 .date {
   white-space:pre;
   display:flex
